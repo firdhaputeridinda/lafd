@@ -1,4 +1,3 @@
-
 CREATE TABLE staff
 (
   nik CHAR(16) NOT NULL,
@@ -12,21 +11,21 @@ CREATE TABLE staff
 
 CREATE TABLE category
 (
-  idCategory INT NOT NULL AUTO_INCREMENT,
+  idCategory INT NOT NULL,
   categoryName VARCHAR(50) NOT NULL,
   PRIMARY KEY (idCategory)
 );
 
 CREATE TABLE places
 (
-  idPlaces INT NOT NULL AUTO_INCREMENT,
+  idPlaces INT NOT NULL,
   placesName VARCHAR(50) NOT NULL,
   PRIMARY KEY (idPlaces)
 );
 
 CREATE TABLE students
 (
-  nim CHAR(8) NOT NULL,
+  nim VARCHAR(10) NOT NULL,
   name VARCHAR(50) NOT NULL,
   password VARCHAR(50) NOT NULL,
   email VARCHAR(50) NOT NULL,
@@ -36,7 +35,7 @@ CREATE TABLE students
 
 CREATE TABLE losts
 (
-  idLost INT NOT NULL AUTO_INCREMENT,
+  idLost INT NOT NULL,
   lostTime DATETIME NOT NULL,
   stuffName VARCHAR(50) NOT NULL,
   stuffPhotos VARCHAR(140) NOT NULL,
@@ -44,7 +43,7 @@ CREATE TABLE losts
   status BIT NOT NULL,
   nik CHAR(16) NOT NULL,
   idPlaces INT NOT NULL,
-  nim VARCHAR(8) NOT NULL,
+  nim VARCHAR(10) NOT NULL,
   idCategory INT NOT NULL,
   PRIMARY KEY (idLost),
   FOREIGN KEY (nik) REFERENCES staff(nik),
