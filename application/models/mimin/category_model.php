@@ -5,10 +5,12 @@ class Category_model extends CI_Model
 {
     public function __construct()
     {
+        //parent::__construct();
         $this->load->database();
+        $this->load->helper('url_helper');
     }
 
-    public function get_category($id = false)
+    public function get_category($id = FALSE)
     {
         if ($id === FALSE) 
         {
@@ -20,21 +22,28 @@ class Category_model extends CI_Model
         return $query->row_array();
     }
 
-    public function set_category($id = false)
+    public function set_category($id = FALSE)
     {
-        $this->load->helper('url_helper');
-
         if ($id === FALSE) {
             $data = array(
-                'idCategory' => $this->input->post(''),
-                'categoryName' => $this->input->post('name')
+                'idCategory' => $this->input->post(sha1('')),
+                'categoryName' => $this->input->post('name')    
             );
     
             return $this->db->insert('category', $data);
         }
         
-        $data = $this->input->post('name');
-        $query = $this->db->update('category', $data, array('id' => $id));
+        $data = array(
+            'categoryName' => $this->input->post('name')
+        );
+        $this->db->where('idCategory', $id);
+        $this->db->update('category', $data);
+    }
+
+    public function get_row_total()
+    {
+        $query = $this->db->get('category');
+        return $query->num_rows();
     }
 }
 

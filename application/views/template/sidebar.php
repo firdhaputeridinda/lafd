@@ -51,6 +51,6 @@
               <a class="nav-link" href="<?php echo site_url('mimin/students/create'); ?>">Add Students</a>
             </li>
           </ul>
-          <center><small>Page rendered in {elapsed_time}</small></center>
+          <small>Page rendered in {elapsed_time}</small>
         </nav>
         

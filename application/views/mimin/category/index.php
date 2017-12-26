@@ -1,5 +1,6 @@
 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
         <h2><?php echo $title; ?></h2>
+        <?php echo $pagination; ?>
         <div class="table-responsive">
             <table class="table table-striped">
               <thead>

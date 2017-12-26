@@ -14,7 +14,11 @@
             </div>
             <div class="col-md-6 mb-3">
             <label for="validationDefault01">Kategori</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Kategori" required>
+            <select class="form-control" required>
+                <?php foreach ($category as $category_item): ?> 
+                <option value="<?php echo $category_item['idCategory'] ;?>"><?php echo $category_item['categoryName'] ;?></option>
+                <?php endforeach; ?>
+            </select>
             <div class="invalid-feedback">
                 Please provide a valid Name.
             </div>
@@ -23,7 +27,11 @@
         <div class="row">
             <div class="col-md-6 mb-3">
             <label for="validationDefault01">Lokasi</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Kategori" required>
+            <select class="form-control" required>
+                <?php foreach ($places as $places_item): ?> 
+                <option value="<?php echo $places_item['idPlaces'] ;?>"><?php echo $places_item['placesName'] ;?></option>
+                <?php endforeach; ?>
+            </select>
             <div class="invalid-feedback">
                 Please provide a valid Name.
             </div>
@@ -37,16 +45,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 mb-3">
-            <label for="validationDefault03">Waktu Hilang</label>
-            <input type="email" class="form-control" id="validationDefault04" placeholder="Waktu" required>
+            <div class="col-md-3 mb-3">
+            <label for="validationDefault03">Tanggal</label>
+            <input type="date" class="form-control" id="validationDefault04" placeholder="Waktu" value="" required>
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
+            </div>
+            <div class="col-md-3 mb-3">
+            <label for="validationDefault03">Jam</label>
+            <input type="time" class="form-control" id="validationDefault04" placeholder="Waktu" value="" required>
             <div class="invalid-feedback">
                 Please provide a valid email.
             </div>
             </div>
             <div class="col-md-6 mb-3">
             <label for="validationDefault04">Foto</label>
-            <input type="password" class="form-control" id="validationDefault05" placeholder="Foto" required>
+            <input type="file" class="form-control" id="validationDefault05" placeholder="Foto" required>
             <div class="invalid-feedback">
                 Please provide a valid password.
             </div>

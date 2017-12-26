@@ -1,7 +1,7 @@
 <main role="main" class="col-sm-9 ml-sm-auto col-md-10 pt-3">
     <h2><?php echo $title; ?></h2>
 
-    <?php echo form_open('mimin/places/update'); ?>
+    <?php echo form_open('mimin/places/update/'.$places_item['idPlaces']); ?>
         <div class="row">
             <div class="col-md-6 mb-3">
             <label for="validationDefault01">Nama Tempat</label>

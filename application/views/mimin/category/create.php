@@ -3,6 +3,7 @@
 
     <?php echo form_open('mimin/category/create'); ?>
         <div class="row">
+            <?php echo validation_errors(); ?>
             <div class="col-md-6 mb-3">
             <label for="validationDefault01">Nama</label>
             <input type="text" name="name" class="form-control" id="validationDefault02" placeholder="Nama Kategori" required>
@@ -12,5 +13,5 @@
             </div>
         </div>
         <button class="btn btn-primary" type="submit">Save</button>
-    </form>
+    <?php echo form_close(); ?>
 </main>

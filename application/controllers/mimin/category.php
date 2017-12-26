@@ -7,13 +7,21 @@ class Category extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mimin/category_model');
-        $this->load->helper('url_helper');
+        $this->load->helper(array('url_helper','form'));
+        $this->load->library(array('form_validation','pagination'));
     }
 
     public function index()
     {
         $data['category'] = $this->category_model->get_category();
         $data['title'] = 'Data Kategori Barang';
+
+        $config['base_url'] = 'category';
+        $config['total_rows'] = $this->category_model->get_row_total();
+        $config['per_page'] = 8;
+        
+        $this->pagination->initialize($config);
+        $data['pagination'] = $this->pagination->create_links();
 
         $this->load->view('mimin/template/header', $data);
         $this->load->view('mimin/template/sidebar', $data);
@@ -23,33 +31,27 @@ class Category extends CI_Controller
 
     public function create()
     {
-        $this->load->helper('form');
-        $this->load->library('form_validation');
-
         $data['title'] = 'Tambah data Kategori';
 
-        $this->form_validation->set_rules('name', 'Name', 'required');
+        $this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric_spaces|max_length[50]');
 
         if ($this->form_validation->run() === false)
         {
             $this->load->view('mimin/template/header', $data);
-            $this->load->view('mimin/template/sidebar', $data);
-            $this->load->view('mimin/category/create', $data);
-            $this->load->view('mimin/template/footer', $data);
+            $this->load->view('mimin/template/sidebar');
+            $this->load->view('mimin/category/create');
+            $this->load->view('mimin/template/footer');
         }
         else {
             $this->category_model->set_category();
-            // redirect ke index
+            redirect('mimin/category');
         }
     }
 
-    public function view($id=NULL)
+    public function view($id = NULL)
     {
-      $this->load->helper('form');
-      $this->load->library('form_validation');
-  
       $data['category_item'] = $this->category_model->get_category($id);
-      $data['title'] = 'Detail Categori';
+      $data['title'] = 'Detail Kategori';
   
       if (empty($data['category_item']))
          {
@@ -59,9 +61,22 @@ class Category extends CI_Controller
   
          $this->load->view('mimin/template/header',$data);
          $this->load->view('mimin/category/view', $data);
-         $this->load->view('mimin/template/footer',$data);
+         $this->load->view('mimin/template/footer');
+    }
+
+    public function update($id = NULL)
+    {
+        $this->form_validation->set_rules('name', 'Name', 'required|alpha|max_length[50]');
+
+        if ($this->form_validation->run() === false)
+        {
+            //validation here
+
+        }
+        else {
+            $this->category_model->set_category($id);
+            redirect('mimin/category');
+        }
     }
 }
-
-
 ?>

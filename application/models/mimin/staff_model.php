@@ -39,6 +39,11 @@ class Staff_model extends CI_Model
 
     return $this->db->insert('staff', $data);
   }
+
+  public function login($user, $pw)
+  {
+    $this->load->helper('url');
+  }
 }
 
  ?>

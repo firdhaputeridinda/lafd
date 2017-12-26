@@ -11,8 +11,9 @@ class Losts extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('mimin/losts_model');
-    $this->load->helper('url_helper');
+    $this->load->model(array('mimin/losts_model','mimin/category_model','mimin/places_model'));
+    $this->load->helper(array('url_helper','form'));
+    $this->load->library(array('form_validation','calendar'));
   }
 
   public function index()
@@ -28,9 +29,6 @@ class Losts extends CI_Controller
 
   public function view($id=NULL)
   {
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-
     $data['losts_item'] = $this->losts_model->get_losts($id);
     $data['title'] = 'Detail Kehilangan';
 
@@ -47,8 +45,9 @@ class Losts extends CI_Controller
 
   public function create()
   {
-    $this->load->helper('form');
-    $this->load->library('form_validation');
+    $data['category'] = $this->category_model->get_category();
+    $data['places'] = $this->places_model->get_places();
+    //$data['calendar'] = $this->calendar->generate();
 
     $data['title'] = 'Add losts';
 
@@ -60,8 +59,8 @@ class Losts extends CI_Controller
 
     if ($this->form_validation->run() === FALSE)
     {
-      $this->load->view('mimin/template/header',$data);
-      $this->load->view('mimin/losts/create');
+      $this->load->view('mimin/template/header', $data);
+      $this->load->view('mimin/losts/create', $data);
       $this->load->view('mimin/template/footer');
     }
     else {
