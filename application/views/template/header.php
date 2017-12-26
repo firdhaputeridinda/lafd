@@ -36,9 +36,7 @@
       </div>
       <div class="navbar navbar-dark bg-dark">
         <div class="container d-flex justify-content-between">
-          <a href="#" class="navbar-brand">LAFD</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <a href="#" class="navbar-brand">Lost and Found</a>
+          <a href="#" class="btn btn-primary">Login or Sign Up</a>
         </div>
       </div>

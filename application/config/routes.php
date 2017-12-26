@@ -53,6 +53,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['user'] = 'user/auth';
 $route['mimin'] = 'mimin/auth';
 
-$route['default_controller'] = 'home';
+$route['default_controller'] = 'homepage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
