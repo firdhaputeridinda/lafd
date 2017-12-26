@@ -14,7 +14,12 @@ class Category_model extends CI_Model
     {
         if ($id === FALSE) 
         {
+<<<<<<< HEAD
             $query = $this->db->get('category',8);
+=======
+            // select * from category
+            $query = $this->db->get('category');
+>>>>>>> 33b40b08652e6f50762b34dcc91df2c37e15e336
             return $query->result_array();
         }
 
