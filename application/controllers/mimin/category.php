@@ -16,10 +16,11 @@ class Category extends CI_Controller
         $data['category'] = $this->category_model->get_category();
         $data['title'] = 'Data Kategori Barang';
 
+        // Pagination not done
         $config['base_url'] = 'category';
         $config['total_rows'] = $this->category_model->get_row_total();
         $config['per_page'] = 8;
-        
+        $config['uri_segment'] = 3;
         $this->pagination->initialize($config);
         $data['pagination'] = $this->pagination->create_links();
 
@@ -66,7 +67,7 @@ class Category extends CI_Controller
 
     public function update($id = NULL)
     {
-        $this->form_validation->set_rules('name', 'Name', 'required|alpha|max_length[50]');
+        $this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric_spaces|max_length[50]');
 
         if ($this->form_validation->run() === false)
         {

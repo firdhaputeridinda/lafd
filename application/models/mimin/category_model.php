@@ -14,7 +14,7 @@ class Category_model extends CI_Model
     {
         if ($id === FALSE) 
         {
-            $query = $this->db->get('category');
+            $query = $this->db->get('category',8);
             return $query->result_array();
         }
 
